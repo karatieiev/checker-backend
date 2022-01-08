@@ -33,6 +33,6 @@ def create():
 
 @app.route('/read')
 def read():
-    my_file = open("BabyFile.txt", "a+")
+    my_file = open("BabyFile.txt", "r")
     file_content = my_file.read()
     return file_content
