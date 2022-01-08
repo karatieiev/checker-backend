@@ -21,3 +21,11 @@ except OSError:
 @app.route('/hello')
 def hello():
     return 'Hello, World!'
+
+
+@app.route('/create')
+def hello():
+    my_file = open("BabyFile.txt", "w+")
+    my_file.write("hello")
+    my_file.close()
+    return 'file has been created'
