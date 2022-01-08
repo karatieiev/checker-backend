@@ -24,8 +24,15 @@ def hello():
 
 
 @app.route('/create')
-def hello():
+def create():
     my_file = open("BabyFile.txt", "w+")
-    my_file.write("hello")
+    my_file.write("this text is from file")
     my_file.close()
     return 'file has been created'
+
+
+@app.route('/read')
+def read():
+    my_file = open("BabyFile.txt", "a+")
+    file_content = my_file.read()
+    return file_content
