@@ -15,3 +15,8 @@ def get_employees():
     cursor.execute('SELECT * FROM employees')
     return json.dumps(cursor.fetchall())
 
+
+def get_employee(_id):
+    cursor.execute('SELECT * FROM employees WHERE id = {}'.format(_id))
+    return json.dumps(cursor.fetchall())
+
