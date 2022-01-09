@@ -20,3 +20,8 @@ def get_employee(_id):
     cursor.execute('SELECT * FROM employees WHERE id = {}'.format(_id))
     return json.dumps(cursor.fetchall())
 
+
+def delete_employee(_id):
+    cursor.execute('DELETE FROM employees WHERE id = {}'.format(_id))
+    conn.commit()
+    return ''

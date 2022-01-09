@@ -1,5 +1,6 @@
 import app.db as db
 from flask import Flask
+from flask import request
 
 
 app = Flask(__name__, instance_relative_config=True)
@@ -15,6 +16,9 @@ def employees():
     return db.get_employees()
 
 
-@app.route('/employees/<employee_id>')
+@app.route('/employees/<employee_id>', methods=['GET', 'POST', 'PUT', 'DELETE'])
 def employee(employee_id):
-    return db.get_employee(employee_id)
+    if request.method == 'GET':
+        return db.get_employee(employee_id)
+    if request.method == 'DELETE':
+        return db.delete_employee(employee_id)
