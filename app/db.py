@@ -25,3 +25,23 @@ def delete_employee(_id):
     cursor.execute('DELETE FROM employees WHERE id = {}'.format(_id))
     conn.commit()
     return ''
+
+
+def post_employee(_json):
+    cursor.execute(
+        'INSERT INTO employees(name, photo) VALUES(\'{}\', \'{}\')'.format(
+            _json['name'], _json['photo']
+        )
+    )
+    conn.commit()
+    return ''
+
+
+def put_employee(_id, _json):
+    cursor.execute(
+        'UPDATE employees SET name = \'{}\', photo = \'{}\' WHERE id = {}'.format(
+            _json['name'], _json['photo'], _id
+        )
+    )
+    conn.commit()
+    return ''
