@@ -3,10 +3,10 @@ import json
 from psycopg2.extras import RealDictCursor
 
 conn = psycopg2.connect(
-    dbname='ddfcjsqnp2k2fm',
-    user='kekcwokcpwjykc',
-    password='a832412499adad830b261458744deca09aba3da5408aa99e937f483639393dc9',
-    host='ec2-54-220-223-3.eu-west-1.compute.amazonaws.com'
+    dbname='d1q47tkodnglqg',
+    user='peqkgwcvqmdgdr',
+    password='b84df18e3fa54a74cd47d72da3366afc73442a25d782da280be9cc051cc8f9b3',
+    host='ec2-54-171-25-232.eu-west-1.compute.amazonaws.com'
 )
 cursor = conn.cursor(cursor_factory=RealDictCursor)
 
