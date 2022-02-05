@@ -6,6 +6,11 @@ from flask import request
 app = Flask(__name__, instance_relative_config=True)
 
 
+@app.route('/', methods=['GET'])
+def root():
+    return '<button style="color: red">It is my service</button>'
+
+
 @app.route('/hello', methods=['GET'])
 def hello():
     return 'Hello, World!'
