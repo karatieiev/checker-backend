@@ -1,4 +1,5 @@
 import app.db as db
+import app.bl as bl
 from flask import Flask
 from flask import request
 
@@ -32,3 +33,10 @@ def employee(employee_id):
         return db.delete_employee(employee_id)
     if request.method == 'PUT':
         return db.put_employee(employee_id, request.json)
+
+
+@app.route('/employees/check', methods=['POST'])
+def check():
+    if request.method == 'POST':
+        return bl.check(request.json)
+

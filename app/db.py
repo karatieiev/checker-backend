@@ -45,3 +45,8 @@ def put_employee(_id, _json):
     )
     conn.commit()
     return ''
+
+
+def get_employee_photo_base64(_id):
+    cursor.execute('SELECT photo FROM employees WHERE id = {}'.format(_id))
+    return cursor.fetchone()
