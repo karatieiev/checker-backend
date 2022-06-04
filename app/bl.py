@@ -34,8 +34,8 @@ def check(json_from_request):
         face_descriptor2 = facerec.compute_face_descriptor(img, shape)
 
         dist = distance.euclidean(face_descriptor1, face_descriptor2)
-        result = '{\'error\':\'\',\'result\':' + str(dist < 0.6).lower() + ',\'name\':\'' + json_from_db['name'] + '\'}'
+        result = '{"error":"","result":' + str(dist < 0.6).lower() + ',"name":"' + json_from_db['name'] + '","id":' + json_from_db['id'] + '}'
     except:
-        result = '{\'error\':\'Something went wrong\',\'result\':false}'
+        result = '{"error":"Something went wrong","result":false}'
 
     return result
