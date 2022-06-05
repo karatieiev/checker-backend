@@ -1,8 +1,7 @@
-import time
-
 import psycopg2
 import json
 from psycopg2.extras import RealDictCursor
+import app.helpers as helpers
 
 conn = psycopg2.connect(
     dbname='d1q47tkodnglqg',
@@ -62,3 +61,8 @@ def add_to_report(_id):
     )
     conn.commit()
     return ''
+
+
+def get_report():
+    cursor.execute('SELECT * FROM report')
+    return json.dumps(cursor.fetchall(), default=helpers.timestamp_convertor)

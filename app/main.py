@@ -40,3 +40,9 @@ def check():
     if request.method == 'POST':
         return bl.check(request.json)
 
+
+@app.route('/report', methods=['GET'])
+def report():
+    if request.method == 'GET':
+        return db.get_report()
+
