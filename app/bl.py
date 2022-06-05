@@ -11,7 +11,7 @@ def convert(b64):
     return imread(io.BytesIO(base64.b64decode(b64)))
 
 
-def __check__(json_from_request):
+def doCheck(json_from_request):
     try:
         shape = None
         json_from_db = db.get_employee_photo_base64(json_from_request['id'])
@@ -40,7 +40,7 @@ def __check__(json_from_request):
 
 
 def check(json_from_request):
-    result = __check__(json_from_request)
+    result = doCheck(json_from_request)
     print(result)
     if result.get('error') == '':
         return '{"error":"","result":' + str(result.get('pass')).lower() + ',"name":"' + result.get('name') + '"}'
