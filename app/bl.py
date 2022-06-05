@@ -41,7 +41,6 @@ def doCheck(json_from_request):
 
 def check(json_from_request):
     result = doCheck(json_from_request)
-    print(result)
     if result.get('error') == '':
         return '{"error":"","result":' + str(result.get('pass')).lower() + ',"name":"' + result.get('name') + '"}'
     else:
