@@ -41,6 +41,8 @@ def doCheck(json_from_request):
 
 def check(json_from_request):
     result = doCheck(json_from_request)
+    if result.get('pass'):
+        db.add_to_report(json_from_request['id'])
     if result.get('error') == '':
         return '{"error":"","result":' + str(result.get('pass')).lower() + ',"name":"' + result.get('name') + '"}'
     else:

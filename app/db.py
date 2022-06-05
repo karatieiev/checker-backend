@@ -1,3 +1,5 @@
+import time
+
 import psycopg2
 import json
 from psycopg2.extras import RealDictCursor
@@ -50,3 +52,13 @@ def put_employee(_id, _json):
 def get_employee_photo_base64(_id):
     cursor.execute('SELECT * FROM employees WHERE id = {}'.format(_id))
     return cursor.fetchone()
+
+
+def add_to_report(_id):
+    cursor.execute(
+        'INSERT INTO report(employee_id, time) VALUES({}, current_timestamp)'.format(
+            _id
+        )
+    )
+    conn.commit()
+    return ''
