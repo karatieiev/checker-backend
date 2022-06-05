@@ -12,7 +12,7 @@ cursor = conn.cursor(cursor_factory=RealDictCursor)
 
 
 def get_employees():
-    cursor.execute('SELECT * FROM employees')
+    cursor.execute('SELECT id, name FROM employees')
     return json.dumps(cursor.fetchall())
 
 
