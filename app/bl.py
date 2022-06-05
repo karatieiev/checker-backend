@@ -11,7 +11,7 @@ def convert(b64):
     return imread(io.BytesIO(base64.b64decode(b64)))
 
 
-def check(json_from_request):
+def __check__(json_from_request):
     try:
         shape = None
         json_from_db = db.get_employee_photo_base64(json_from_request['id'])
@@ -34,8 +34,16 @@ def check(json_from_request):
         face_descriptor2 = facerec.compute_face_descriptor(img, shape)
 
         dist = distance.euclidean(face_descriptor1, face_descriptor2)
-        result = '{"error":"","result":' + str(dist < 0.6).lower() + ',"name":"' + json_from_db['name'] + '"}'
+        return {'pass': dist < 0.6, 'name': json_from_db['name'], 'error': ''}
     except:
-        result = '{"error":"Something went wrong","result":false}'
+        return {'pass': bool(False), 'name': '', 'error': 'Something went wrong'}
 
-    return result
+
+def check(json_from_request):
+    result = __check__(json_from_request)
+    print(result)
+    if result.get('error') == '':
+        return '{"error":"","result":' + str(result.get('pass')).lower() + ',"name":"' + result.get('name') + '"}'
+    else:
+        return '{"error":"' + result.get('error') + '","result":false}'
+
