@@ -14,7 +14,7 @@ cursor = conn.cursor(cursor_factory=RealDictCursor)
 
 def get_employees():
     cursor.execute('SELECT id, name, position, date_of_birth FROM employees')
-    return json.dumps(cursor.fetchall())
+    return json.dumps(cursor.fetchall(), indent=4, sort_keys=True, default=str)
 
 
 def get_employee(_id):
