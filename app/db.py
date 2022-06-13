@@ -30,8 +30,8 @@ def delete_employee(_id):
 
 def post_employee(_json):
     cursor.execute(
-        'INSERT INTO employees(name, photo) VALUES(\'{}\', \'{}\')'.format(
-            _json['name'], _json['photo']
+        'INSERT INTO employees(name, photo, position, date_of_birth) VALUES(\'{}\', \'{}\', \'{}\', \'{}\')'.format(
+            _json['name'], _json['photo'], _json['position'], _json['date_of_birth']
         )
     )
     conn.commit()
