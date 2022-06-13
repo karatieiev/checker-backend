@@ -64,5 +64,5 @@ def add_to_report(_id):
 
 
 def get_report():
-    cursor.execute('SELECT * FROM report')
+    cursor.execute('SELECT report.*, employees.name FROM report LEFT JOIN employees ON report.employee_id = employees.id')
     return json.dumps(cursor.fetchall(), default=helpers.timestamp_convertor)
