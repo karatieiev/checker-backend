@@ -19,7 +19,7 @@ def get_employees():
 
 def get_employee(_id):
     cursor.execute('SELECT * FROM employees WHERE id = {}'.format(_id))
-    return json.dumps(cursor.fetchall())
+    return json.dumps(cursor.fetchall(), indent=4, sort_keys=True, default=str)
 
 
 def delete_employee(_id):
