@@ -40,7 +40,7 @@ def post_employee(_json):
 
 def put_employee(_id, _json):
     cursor.execute(
-        'UPDATE employees SET name = \'{}\', photo = \'{}\', position = \'{}\' date_of_birth = \'{}\' WHERE id = {}'.format(
+        'UPDATE employees SET name = \'{}\', photo = \'{}\', position = \'{}\', date_of_birth = \'{}\' WHERE id = {}'.format(
             _json['name'], _json['photo'], _json['position'], _json['date_of_birth'], _id
         )
     )
