@@ -3,6 +3,7 @@ import app.bl as bl
 from flask import Flask
 from flask import request
 from flask_cors import CORS
+import os
 
 
 app = Flask(__name__, instance_relative_config=True)
@@ -11,7 +12,7 @@ CORS(app)
 
 @app.route('/', methods=['GET'])
 def root():
-    return '<button style="color: red">It is my service</button>'
+    return os.path.join('web', 'index.html')
 
 
 @app.route('/hello', methods=['GET'])
