@@ -2,6 +2,7 @@ import app.db as db
 import app.bl as bl
 from flask import Flask
 from flask import request
+from flask import render_template
 from flask_cors import CORS
 import os
 
@@ -12,7 +13,10 @@ CORS(app)
 
 @app.route('/', methods=['GET'])
 def root():
-    return os.path.join('web', 'index.html')
+    try:
+        return render_template(os.path.join('web', 'index.html'))
+    except Exception as e:
+        return str(e)
 
 
 @app.route('/hello', methods=['GET'])
