@@ -2,7 +2,7 @@ import app.db as db
 import app.bl as bl
 from flask import Flask
 from flask import request
-from flask import render_template
+from flask import send_file
 from flask_cors import CORS
 import os
 
@@ -14,7 +14,7 @@ CORS(app)
 @app.route('/', methods=['GET'])
 def root():
     try:
-        return render_template(os.path.join('web', 'index.html'))
+        return send_file(os.path.join('web', 'index.html'))
     except Exception as e:
         return str(e)
 
